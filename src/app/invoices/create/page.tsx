@@ -1,3 +1,4 @@
+'use server'
 import { createClient } from "@/utils/supabase/server";
 import { createInvoice, deleteInvoice } from "../../lib/actions";
 
@@ -13,7 +14,12 @@ export default async function InvoicesPage() {
 
       {/* Create form */}
       <form action={createInvoice}>
-        <input type="text" name="customer" placeholder="Customer name" required />
+        <input
+          type="text"
+          name="customer"
+          placeholder="Customer name"
+          required
+        />
         <input type="number" name="amount" placeholder="Amount" required />
         <select name="status">
           <option value="pending">Pending</option>
@@ -30,7 +36,8 @@ export default async function InvoicesPage() {
           </p>
 
           {/* Delete button */}
-          <form action={async () => deleteInvoice(invoice.id)}>
+          <form action={deleteInvoice}>
+            <input type="hidden" name="id" value={invoice.id} />
             <button type="submit">Delete</button>
           </form>
         </div>

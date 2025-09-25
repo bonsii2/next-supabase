@@ -2,6 +2,7 @@
 
 import { createClient } from "@/utils/supabase/server"
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function  createInvoice(formData: FormData): Promise<void>{
     const supabase = await createClient();
@@ -18,6 +19,7 @@ export async function  createInvoice(formData: FormData): Promise<void>{
         throw new Error(error.message)
     }
     revalidatePath('/invoices')
+    redirect('/invoices')
    
 }
 
@@ -38,7 +40,8 @@ export async function updateInvoice(id: string, formData: FormData){
 
 }
 
-export async function deleteInvoice(id: string){
+export async function deleteInvoice(formData: FormData){
+      const id = formData.get("id") as string;
     const supabase = await createClient();
     const {error} = await supabase
     .from('invoices')

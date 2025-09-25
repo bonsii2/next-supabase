@@ -24,11 +24,15 @@ export async function  createInvoice(formData: FormData): Promise<void>{
 }
 
 
-export async function updateInvoice(id: string, formData: FormData){
+export async function updateInvoice( formData: FormData){
+    const id = formData.get('id') as string;
+    console.log(id)
+    console.log(formData.get('customer_name'))
+    
   const  supabase = await createClient()
   const {error} = await supabase.from('invoices')
   .update({
-    customer: formData.get('customer_id'),
+    customer_name: formData.get('customer_name'),
     amount: Number(formData.get('amount')),
     status: formData.get('status'),
   })
@@ -37,6 +41,8 @@ export async function updateInvoice(id: string, formData: FormData){
  if(error) throw new Error(error.message)
 
     revalidatePath('/invoices')
+    redirect('/invoices')
+    
 
 }
 

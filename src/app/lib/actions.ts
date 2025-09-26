@@ -46,7 +46,7 @@ export async function updateInvoice( formData: FormData){
 }
 
 export async function deleteInvoice(formData: FormData){
-      const id = formData.get("id") as string;
+    const id = formData.get("id") as string;
     const supabase = await createClient();
     const {error} = await supabase
     .from('invoices')

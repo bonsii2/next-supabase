@@ -38,3 +38,4 @@ export async function fetchInvoicesPages(query: string, perPage: number = 5) {
 
   return Math.ceil(filtered.length / perPage);
 }
+

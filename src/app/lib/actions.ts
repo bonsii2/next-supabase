@@ -56,3 +56,4 @@ export async function deleteInvoice(formData: FormData){
     if(error) throw new Error(error.message)
         revalidatePath('invoices')
 }
+

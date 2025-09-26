@@ -42,6 +42,8 @@ export default async function InvoicesPage({
             </Link>
           </div>
         ))}
+
+        <Link href={'./invoices/invoice'}>search by id</Link>
       </div>
     </>
   );

@@ -26,7 +26,6 @@ export async function  createInvoice(formData: FormData): Promise<void>{
 
 export async function updateInvoice( formData: FormData){
     const id = formData.get('id') as string;
-    console.log(id)
     console.log(formData.get('customer_name'))
     
   const  supabase = await createClient()

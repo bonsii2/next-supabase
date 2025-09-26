@@ -29,7 +29,7 @@ export default async function InvoicesPage({
         {invoices?.map((invoice) => (
           <div key={invoice.id}>
             <p>
-              {invoice.customer} - {invoice.amount} - {invoice.status}
+              {invoice.customer_name} - {invoice.amount} - {invoice.status}
             </p>
             {/* Delete button */}
             <form action={deleteInvoice}>
@@ -38,7 +38,7 @@ export default async function InvoicesPage({
             </form>
          
             <Link href={`/invoices/${invoice.id}/edit`}>
-              <button type="button">Update</button>
+              Update
             </Link>
           </div>
         ))}
